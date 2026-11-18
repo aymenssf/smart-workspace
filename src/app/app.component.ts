@@ -9,14 +9,14 @@ import { Database, ref, onValue } from '@angular/fire/database';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  userData: any = null;
+  data: any = null;
   private database = inject(Database);
 
   ngOnInit() {
-    const dbRef = ref(this.database, 'test');
+    const dbRef = ref(this.database, 'capteurs');
     onValue(dbRef, (snapshot) => {
       if (snapshot.exists()) {
-        this.userData = snapshot.val();
+        this.data = snapshot.val();
       }
     });
   }
